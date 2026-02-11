@@ -49,7 +49,7 @@ EOT
     })
     cluster_profile = object({
       domain                      = string
-      fips_enabled                = optional(bool, false)
+      fips_enabled                = optional(bool) # Default: false
       managed_resource_group_name = optional(string)
       pull_secret                 = optional(string)
       version                     = string
@@ -59,14 +59,14 @@ EOT
     })
     main_profile = object({
       disk_encryption_set_id     = optional(string)
-      encryption_at_host_enabled = optional(bool, false)
+      encryption_at_host_enabled = optional(bool) # Default: false
       subnet_id                  = string
       vm_size                    = string
     })
     network_profile = object({
-      outbound_type                                = optional(string, "Loadbalancer")
+      outbound_type                                = optional(string) # Default: "Loadbalancer"
       pod_cidr                                     = string
-      preconfigured_network_security_group_enabled = optional(bool, false)
+      preconfigured_network_security_group_enabled = optional(bool) # Default: false
       service_cidr                                 = string
     })
     service_principal = object({
@@ -76,7 +76,7 @@ EOT
     worker_profile = object({
       disk_encryption_set_id     = optional(string)
       disk_size_gb               = number
-      encryption_at_host_enabled = optional(bool, false)
+      encryption_at_host_enabled = optional(bool) # Default: false
       node_count                 = number
       subnet_id                  = string
       vm_size                    = string
