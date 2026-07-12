@@ -1,3 +1,7 @@
+output "redhat_openshift_clusters_id" {
+  description = "Map of id values across all redhat_openshift_clusters, keyed the same as var.redhat_openshift_clusters"
+  value       = { for k, v in azurerm_redhat_openshift_cluster.redhat_openshift_clusters : k => v.id }
+}
 output "redhat_openshift_clusters_api_server_profile" {
   description = "Map of api_server_profile values across all redhat_openshift_clusters, keyed the same as var.redhat_openshift_clusters"
   value       = { for k, v in azurerm_redhat_openshift_cluster.redhat_openshift_clusters : k => v.api_server_profile }
